@@ -1,0 +1,9 @@
+DELETE FROM Functions;
+DELETE FROM Users;
+DELETE FROM Admin;
+DELETE FROM Category;
+DELETE FROM Product;
+DELETE FROM Basket;
+DELETE FROM Activity;
+DELETE FROM Events;
+DELETE FROM Comments;
