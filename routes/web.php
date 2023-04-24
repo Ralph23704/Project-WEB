@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use Intervention\Image\Facades\Image;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,10 +19,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/cart', function () {
+    return view('cart');
+});
+
 Route::get('/shop', function () {
-    return view('Shop');
+    return view('Shop'); //,['image'=>Image::make('img/logo_BDE.jpg')->resize(88, 79)]
 });
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+

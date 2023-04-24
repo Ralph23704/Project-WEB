@@ -1,0 +1,102 @@
+/*Font classes*/
+/*header*/
+.header{font-family: Candara}
+/*title1*/
+.title1{font-family: Candara; color: #4B4D51}
+/*title2*/
+.title2{font-family: "Berlin Sans FB";}
+/*Body*/
+.body{font-family: Bahnschrift}
+/*BodyHighlight*/
+.body{font-family: Bahnschrift; font-weight: bold}
+
+#logo{
+    width: 40px;
+    height: 30px;
+    border-radius: 20px;
+}
+
+#shop{
+    background-color: #E09426;
+    height: 50px;
+}
+a{
+    text-decoration: none;
+}
+
+#header{
+    float: right;
+}
+.nav-list{
+    padding-top: 10px;
+}
+
+
+li {
+    list-style:none !important; /*On enlève les puces de la liste */
+    text-decoration:none;
+    display: inline-block;
+    padding-right: 10px;
+    padding-left: 10px;
+
+}
+#shop a{
+    color: black
+}
+select{
+    background-color: #F3F3F2;
+    border-radius: 20px;
+    border-color:#F3F3F2;
+    color: #E09426 ;
+}
+.down{
+    background-color: #F3F3F2;
+    border-radius: 20px;
+    color: black;
+}
+
+.search-container input[type="text"] {
+    background-color: #F3F3F2;
+    border: none;
+}
+
+.search-container{
+    background-color: #F3F3F2;
+    border-radius: 20px
+}
+
+/* Menu burger */
+#menu-burger {
+    float: right;
+    display:none;
+    cursor:pointer;
+}
+#menu-burger .bar1, #menu-burger .bar3 {
+    width:32px;
+    height:5px;
+    margin:6px 0;
+    background-color:black;
+    transition:0.4s;
+    border-radius: 20px
+}
+#menu-burger.bar2{
+    width:26px;
+    height:5px;
+    margin:6px 0;
+    background-color:black;
+    transition:0.4s;
+    border-radius: 20px
+}
+
+
+
+/* Activer responsive menu Burger*/
+@media screen and (max-width: 1000px){
+    #menu-burger{
+        display: inline-block;
+    }
+
+    #header ul{
+        display: none;
+    }
+}

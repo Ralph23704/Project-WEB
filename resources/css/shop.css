@@ -1,0 +1,22 @@
+hr{color: #489BBD; height: 5px; line-height: 10px}
+
+/* Activer responsive*/
+@media screen and (max-width: 1000px){
+    #carousel,.carousel,.carousel .carousel-inner .carousel-item{height: 200px}
+    .carousel-item{align-self: center}
+}
+#carousel,.carousel,.carousel .carousel-inner .carousel-item{height: 300px}
+
+.carte{
+    position: relative;
+    width: 253px;
+    height: 229px;
+    background: #FFFFFF;
+    box-shadow: 0px 4px 4px rgba(0.25, 0.25, 0.25, 0.25);
+    border-radius: 10px;
+    margin-left: 150px;
+}
+.add{float: right}
+.card-img-top{position: relative;height: 150px}
+#sort{float: right;}
+.sort{text-decoration: none;color: #E09426;border-color: #E09426;margin-top: 15px}
