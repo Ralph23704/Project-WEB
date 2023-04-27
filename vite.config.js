@@ -6,7 +6,14 @@ export default defineConfig({
     plugins: [
         laravel([
             'resources/js/app.js',
+            'resources/js/AddCart.js',
+            'resources/js/AddProduct.js',
             'resources/css/app.css',
+            'resources/css/header.css',
+            'resources/css/shop.css',
+            'resources/css/footer.css',
+            'resources/css/AddCart.css',
+            'resources/css/AddProduct.css',
         ]),
     ],
     resolve: {

@@ -15,13 +15,26 @@
 
     <!-- Scripts 'resources/sass/app.scss', -->
     @vite(['resources/js/app.js'])
+    <style>
+        #logo {
+            width : 50px ;
+            height : 50px ;
+            border-radius : 50px ;
+        }
+        .barre-nav {
+            background-color : #F17F23 ;
+            width : 100% ;
+            height : 5px ;
+        }
+    </style>
 </head>
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+                    <img id="logo" src="{{asset('img/logo_BDE.jpg')}}">
+                    {{ config('app.name', 'BDE') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -37,6 +50,13 @@
                     <ul class="navbar-nav ms-auto">
                         <!-- Authentication Links -->
                         @guest
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{url('/')}}">{{ __('Home') }}</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{url('/shopOffline')}}">{{ __('Shop') }}</a>
+                            </li>
                             @if (Route::has('login'))
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
@@ -48,7 +68,30 @@
                                     <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                                 </li>
                             @endif
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{url('/contact')}}">{{ __('Contact') }}</a>
+                                </li>
                         @else
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{url('/home')}}">{{ __('Home') }}</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{url('/shop')}}">{{ __('Shop') }}</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{url('/cart')}}"><i class="bi-cart"></i>{{ __('Cart') }}</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    Notifications
+                                </a>
+
+                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item">
+                                        Retrouvez vos notifications ici
+                                    </a>
+                                </div>
+                            </li>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}
@@ -71,6 +114,9 @@
                 </div>
             </div>
         </nav>
+        <div class="barre-nav">
+
+        </div>
 
         <main class="py-4">
             @yield('content')

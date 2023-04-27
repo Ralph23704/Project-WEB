@@ -1,89 +1,93 @@
-@extends('layouts.navbarShop')
+@extends('layouts.app')
 @section('content')
-    @include('layouts.navbarShop')
+@include('layouts.navbarShop')
     @vite(['resources/css/shop.css','resources/css/footer.css','resources/js/app.js'])
 <!--Annonces-->
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: Arial, sans-serif;
-        }
+<style>
+    .carousel {
+        width: 100%;
+        overflow: hidden;
+    }
 
-        .carousel {
-            width: 100%;
-            overflow: hidden;
-        }
+    .carousel__wrapper {
+        display: flex;
+        flex-wrap: nowrap;
+        transition: transform 0.3s ease-in-out;
+    }
 
-        .carousel__wrapper {
-            display: flex;
-            flex-wrap: nowrap;
-            transition: transform 0.3s ease-in-out;
-        }
+    .carousel__item {
+        flex: 0 0 33.33%;
+        max-width: 33.33%;
+        padding: 10px;
+        box-sizing: border-box;
+    }
 
+    .carousel__item img {
+        width: 100%;
+    }
+
+    .carousel__controls {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 10px 0;
+    }
+
+    .carousel__button {
+        cursor: pointer;
+        background-color: #fff;
+        border: none;
+        outline: none;
+        font-size: 24px;
+        padding: 10px;
+        border-radius: 50%;
+        transition: background-color 0.3s ease-in-out;
+    }
+
+    .carousel__button:hover {
+        background-color: #ccc;
+    }
+
+    @media screen and (max-width: 768px) {
         .carousel__item {
-            flex: 0 0 33.33%;
-            max-width: 33.33%;
-            padding: 10px;
-            box-sizing: border-box;
+            flex: 0 0 50%;
+            max-width: 50%;
         }
+    }
 
-        .carousel__item img {
-            width: 100%;
+    @media screen and (max-width: 480px) {
+        .carousel__item {
+            flex: 0 0 100%;
+            max-width: 100%;
         }
+    }
 
-        .carousel__controls {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin: 10px 0;
-        }
+    li{
+        list-style: none;
+        margin-left: 10px;
+        margin-right: 10px;
+        display: inline-block;
+        color: black;
+    }
+    .carte{
+        position: relative;
+        width: 253px;
+        height: 229px;
+        background: #FFFFFF;
+        box-shadow: 0px 4px 4px rgba(0.25, 0.25, 0.25, 0.25);
+        border-radius: 10px;
+        transform: scale(1);
+        transition-property: transform;
+        transition-duration: 400ms;
+        /*margin-left: 150px;*/
+    }
+    .carte:hover{
+        transform: scale(1.15);
+        cursor: pointer;
+    }
+</style>
 
-        .carousel__button {
-            cursor: pointer;
-            background-color: #fff;
-            border: none;
-            outline: none;
-            font-size: 24px;
-            padding: 10px;
-            border-radius: 50%;
-            transition: background-color 0.3s ease-in-out;
-        }
-
-        .carousel__button:hover {
-            background-color: #ccc;
-        }
-
-        @media screen and (max-width: 768px) {
-            .carousel__item {
-                flex: 0 0 50%;
-                max-width: 50%;
-            }
-        }
-
-        @media screen and (max-width: 480px) {
-            .carousel__item {
-                flex: 0 0 100%;
-                max-width: 100%;
-            }
-        }
-        .carte{
-            position: relative;
-            width: 253px;
-            height: 229px;
-            background: #FFFFFF;
-            box-shadow: 0px 4px 4px rgba(0.25, 0.25, 0.25, 0.25);
-            border-radius: 10px;
-            transform: scale(1);
-            transition-property: transform;
-            transition-duration: 400ms;
-            /*margin-left: 150px;*/
-        }
-        .carte:hover{
-            transform: scale(1.15);
-            cursor: pointer;
-        }
-    </style>
+<body>
 <div class="container-fluid mt-3 mb-3" id="carousel">
     <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-indicators">
@@ -115,23 +119,23 @@
 
 <!--Les plus commandés-->
 <div class="container-fluid mt-3">
-   <h1 class="title1">Les Plus commandés</h1><hr>
+    <h2 class="title1">Les Plus commandés</h2><hr>
 </div>
 <!--Elements-->
 <div class="carousel">
     <div class="carousel__wrapper">
         @foreach($product as $data)
-        <div class="carousel__item">
-            <div class="card carte">
-                <img src="{{asset('img/objet.jpeg')}}" class="card-img-top" alt="Not Found">
-                <div class="card-body">
-                    <h5 class="card-title">{{$data->name}}</h5>
-                    <p class="card-text">{{$data->price}}
-                        <i class="bi-cart add"></i>
-                    </p>
+            <div class="carousel__item">
+                <div class="card carte">
+                    <img src="{{asset('img/objet.jpeg')}}" class="card-img-top" alt="Not Found">
+                    <div class="card-body">
+                        <h5 class="card-title">{{$data->name}}</h5>
+                        <p class="card-text">{{$data->price}}
+                            <i class="bi-cart add" onclick="alert('Not authorized to add to card')"></i>
+                        </p>
+                    </div>
                 </div>
             </div>
-        </div>
         @endforeach
     </div>
     <div class="carousel__controls">
@@ -147,48 +151,44 @@
 
     <!--Tri-->
     <div class="container-fluid">
-        <li class="nav-item dropdown down">
-            <a class="dropdown-toggle body sort" data-bs-toggle="dropdown">Prices</a>
+        <li class="nav-item dropdown">
+            <a class="dropdown-toggle sort" data-bs-toggle="dropdown">Prices</a>
             <ol class="dropdown-menu">
-                <a class="dropdown-item body" href="{{url('/tri')}}">moins de 1000frs</a>
-                <a class="dropdown-item body" href="#">1000frs</a>
-                <a class="dropdown-item body" href="#">Plus de 1000frs</a>
+                <a class="dropdown-item" href="#">moins de 1000frs</a>
+                <a class="dropdown-item" href="#">1000frs</a>
+                <a class="dropdown-item" href="#">Plus de 1000frs</a>
             </ol>
         </li>
-
-        <li class="nav-item dropdown down" id="sort">
-            <a class="dropdown-toggle body sort" data-bs-toggle="dropdown">Sort By</a>
+        <li class="nav-item dropdown" id="sort">
+            <a class="dropdown-toggle sort" data-bs-toggle="dropdown">Sort By</a>
             <ol class="dropdown-menu">
-                <a class="dropdown-item body" href="#">Le moins cher</a>
-                <a class="dropdown-item body" href="#">le plus cher</a>
-                <a class="dropdown-item body" href="#">Ordre alphabetique</a>
+                <a class="dropdown-item" href="#">Le moins cher</a>
+                <a class="dropdown-item" href="#">le plus cher</a>
+                <a class="dropdown-item" href="#">Ordre alphabetique</a>
             </ol>
         </li>
     </div>
     <hr>
+
     <div class="container">
         <div class="row">
-
-                @foreach($product as $data)
+            @foreach($product as $data)
                 <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
                     <div class="card carte">
                         <img src="{{asset('img/objet.jpeg')}}" class="card-img-top" alt="Not Found">
                         <div class="card-body">
                             <h5 class="card-title">{{$data->name}}</h5>
                             <p class="card-text">{{$data->price}}
-                                <i class="bi-cart add"></i>
+                                <i class="bi-cart add" onclick="alert('Not authorized to add to card')"></i>
                             </p>
                         </div>
                     </div>
                 </div>
-                @endforeach
-
+            @endforeach
         </div>
     </div>
 </div>
-    <div class="d-flex justify-content-center">
-        {{$product->links()}}
-    </div>
+
 <div class="container-fluid body mt-3" id="footer">
     Copyright Group 1 X2026
 </div>
@@ -232,4 +232,6 @@
     // Slide automatique toutes les 5 secondes
     setInterval(slideNext, 5000);
 </script>
+</body>
+
 @endsection

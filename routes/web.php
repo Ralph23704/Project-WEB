@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Intervention\Image\Facades\Image;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,12 +23,30 @@ Route::get('/', function () {
 Route::get('/cart', function () {
     return view('cart');
 });
-
-Route::get('/shop', function () {
-    return view('Shop'); //,['image'=>Image::make('img/logo_BDE.jpg')->resize(88, 79)]
+Route::get('/AddProduct', function () {
+    return view('ShopAddCart');
 });
 
-Auth::routes();
+Route::get('/newActivity', function () {
+    return view('AddArticle');
+});
+Route::get('/contact', function () {
+    return view('contact');
+});
+Route::get('/login', function () {
+    return view('log.login');
+});
+Route::get('/register', function () {
+    return view('log.register');
+});
+Route::get('/shop',[\App\Http\Controllers\ProductController::class,'index']);
+Route::post('/Inscription',[\App\Http\Controllers\RegisterController::class,'Inscription']);
+Route::post('/Connexion',[\App\Http\Controllers\LoginController::class,'Connexion']);
+Route::get('/shopOffline',[\App\Http\Controllers\OfflineShopController::class,'index']);
+
+//Auth::routes();
+
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/tri', [App\Http\Controllers\ProductController::class, 'renderWithPrice']);
 

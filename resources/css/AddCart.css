@@ -1,0 +1,296 @@
+* {
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: orange;
+    color: #fff;
+    padding: 10px;
+}
+
+.container {
+    background-color: white;
+    text-align: right;
+    padding: 5px;
+}
+
+.boutique {
+    color: orange;
+    font-size: 24px;
+    margin: 0;
+    order: 1;
+}
+
+.container img {
+    width: 40px;
+    height: 30px;
+    border: 50%;
+    order: 2;
+}
+
+nav ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav li.logo {
+    display: flex;
+    align-items: center;
+}
+
+nav li.logo img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+nav li c {
+    margin-left: 10px;
+}
+
+.search {
+    display: flex;
+    align-items: center;
+}
+
+.search-container {
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.search input[type="text"] {
+    padding: 5px;
+    border-radius: 5px;
+    background-color: #fff;
+    border: none;
+    margin-right: 5px;
+    width: 100%;
+}
+
+.search img {
+    width: 20px;
+    height: 20px;
+}
+
+main {
+    display: flex;
+    flex-direction: row;
+    margin: 20px;
+    height: 500px;
+    /* set a fixed height for the main section */
+}
+
+/* style for the left section */
+#image-details {
+    display: flex;
+    flex-basis: 50%;
+    justify-content: center;
+    align-items: center;
+}
+
+/* style for the image container */
+#image-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: white;
+    height: 100%;
+}
+
+/* style for the big image */
+#image-info1 {
+    flex-basis: 70%;
+    border: 2px black;
+}
+
+/* style for the two small images */
+#image-info2 {
+    flex-basis: 30%;
+    display: flex;
+    flex-direction: row;
+    margin: 8%;
+}
+
+/* style for the left small image */
+#image-info2a {
+    flex-basis: 50%;
+    width: 100%;
+    height: 100%;
+
+}
+
+/* style for the right small image */
+#image-info2b {
+    flex-basis: 50%;
+    width: 100%;
+    height: 100%;
+}
+
+#product-details {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+#product-info {
+    flex-basis: 100%;
+    padding: 20px;
+    border: none solid #DADADA;
+    border-radius: 5px;
+}
+
+/* style for the product name */
+#product-name {
+    font-size: 50px;
+    font-weight: bold;
+}
+
+/* style for the product description */
+#product-description {
+    font-size: 30px;
+    margin-top: 50px;
+}
+
+/* style for the product price */
+#product-price {
+    margin-top: 60px;
+}
+
+/* style for the quantity section */
+#quantity {
+    display: flex;
+    align-items: center;
+    margin-top: 50px;
+}
+
+/* style for the quantity buttons */
+#decrease-quantity,
+#increase-quantity {
+    background-color: skyblue;
+    color: black;
+    border: none;
+    width: 50px;
+    height: 30px;
+    font-size: 16px;
+    margin: 0 30px;
+}
+
+/* style for the product quantity */
+#product-quantity {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 0 10px;
+}
+
+/* style for the buy now button */
+#buy-now {
+    background-color: orange;
+    color: black;
+    border: none;
+    padding: 10px 50px;
+    font-size: 16px;
+    margin-top: 15%;
+    margin-left: 20px;
+}
+
+/* style for the add to cart button */
+#add-to-cart {
+    background-color: orange;
+    color: black;
+    border: none;
+    padding: 10px 50px;
+    font-size: 16px;
+    margin-top: 15%;
+    margin-right: 20px;
+}
+
+@media screen and (max-width: 768px) {
+    main {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    header {
+        margin-right: 0;
+        width: 100%;
+        align-items: center;
+    }
+}
+
+@media screen and (max-width: 768px) {
+
+    /* Modifier la taille de la police */
+    #product-name {
+        font-size: 30px;
+    }
+
+    #product-description {
+        font-size: 20px;
+    }
+
+    #product-price p {
+        font-size: 16px;
+    }
+
+    #quantity p {
+        font-size: 16px;
+    }
+
+    #quantity button {
+        height: 20px;
+        font-size: 14px;
+    }
+
+    #add-to-cart,
+    #buy-now {
+        padding: 8px 30px;
+        font-size: 14px;
+        margin-top: 10%;
+        margin-right: 10px;
+        margin-left: 10px;
+    }
+
+    /* Modifier la taille des images */
+    #image-info1 img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    #image-info2a img,
+    #image-info2b img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    #image-info2 {
+        flex-direction: column;
+        align-items: center;
+        margin: 5%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+
+    /* Modifier la disposition des éléments */
+    #image-details {
+        flex-basis: 100%;
+    }
+
+    #product-details {
+        flex-basis: 100%;
+    }
+
+    #product-info {
+        padding: 10px;
+    }
+}
