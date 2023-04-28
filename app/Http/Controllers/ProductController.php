@@ -22,7 +22,7 @@ class ProductController
         $url = 'http://localhost:4000/product';
         $product= (new \App\Models\data)->getData($url);
 
-        $perPage= 5;
+        $perPage= 10;
         //$items = $product->splice(($page-1)*$perPage);
         $products = new Paginator($product,$perPage);
         $products->withPath('/shop');

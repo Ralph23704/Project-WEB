@@ -123,7 +123,7 @@
         @foreach($product as $data)
         <div class="carousel__item">
             <div class="card carte">
-                <img src="{{asset('img/objet.jpeg')}}" class="card-img-top" alt="Not Found">
+                <img src="{{'img/'.$data->image}}" class="card-img-top" alt="Not Found">
                 <div class="card-body">
                     <h5 class="card-title">{{$data->name}}</h5>
                     <p class="card-text">{{$data->price}}
@@ -172,7 +172,7 @@
                 @foreach($product as $data)
                 <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
                     <div class="card carte">
-                        <img src="{{asset('img/objet.jpeg')}}" class="card-img-top" alt="Not Found">
+                        <img src="{{'img/'.$data->image}}" class="card-img-top" alt="Not Found">
                         <div class="card-body">
                             <h5 class="card-title">{{$data->name}}</h5>
                             <p class="card-text">{{$data->price}}

@@ -14,8 +14,10 @@ class BDEUser
         $url = 'http://localhost:4000/users';
         $get=(new data)->getData($url);
         $done=0;
+        $cookie=[];
         foreach ($get as $item){
             if(($data['email']==$item->email)and($data['password']==$item->password)){
+                $cookie=$item;
                 $done=1;
             }
             else{
@@ -23,7 +25,7 @@ class BDEUser
             }
         }
         if ($done==1){
-            return 'success';
+            return ['success',$cookie];
         }
         return 'FAIL';
     }

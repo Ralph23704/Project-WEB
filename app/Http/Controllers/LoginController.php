@@ -2,9 +2,14 @@
 
 namespace App\Http\Controllers;
 use App;
+use GuzzleHttp\Exception\GuzzleException;
+use Illuminate\Support\Facades\Cookie;
 
 class LoginController
 {
+    /**
+     * @throws GuzzleException
+     */
     public function Connexion(\Illuminate\Http\Request $request)
     {
         $userData = [
@@ -14,11 +19,19 @@ class LoginController
 
         $response = (new App\Models\BDEUser)->signUp($userData);
 
-        if ($response == 'success') {
-            return redirect('/shop');
+        if ($response[0] == 'success') {
+            $cookie = cookie('user',json_encode($response[1]),3600);
+            return redirect(App\Providers\RouteServiceProvider::HOME)->withCookie($cookie);
         } else {
             return back()->withInput()->withErrors($response == 'FAIL'); //repars dans la page avec une erreur
         }
+    }
+
+    public function logout()
+    {
+        //Cookie::forget('user');
+        Cookie::expire('user');
+        return redirect('/contact');
     }
 }
 

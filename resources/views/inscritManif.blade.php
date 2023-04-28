@@ -11,6 +11,23 @@
                 </tr>
             </thead>
             <!--Boucle pour afficher les manifestations-->
+            <tbody>
+            @foreach($users as $person)
+                <tr>
+                    <td><img src="{{$person->username}}"></td>
+                    <td>{{$person->date}}</td>
+                    <td>{{$person->number}}</td>
+                    <td>{{$person->file}}</td>
+                    <td><a type="button" class="btn btn-dark" onclick="uploads('{{$person->name}}')">Upload File</a></td>
+                </tr>
+            @endforeach
+            </tbody>
         </table>
     </div>
+
+<script>
+    function uploads(){
+
+    }
+</script>
 @endsection
