@@ -69,20 +69,45 @@
                     </li>
 
                     <li class="nav-item search-container">
-                        <form action="" method="post">
-                            <input type="text" autocomplete="on" placeholder="Enter the product name" name="search">
+                        <form action="{{url('/search')}}" method="post">
+                            <input type="text" autocomplete="on" placeholder="Enter the product name" name="search" id="#search">
                             <i class="bi-search" type="submit"></i>
                         </form>
                     </li>
                 </ul>
             </div>
         </div>
+        <!--Recherche AJAX-->
+        <div id="result" class="panel panel-default" style="display: none">
+            <ul class="list-group" id="memList">
+
+            </ul>
+        </div>
     </nav>
+
     <main class="py-4">
         @yield('content')
     </main>
 </div>
-
+<script>
+    $(document).ready(function (){
+            $('#search').keyup(function (){
+                    var search=$('#search').val();
+                    if(search===""){
+                        $('#memList').html("");
+                        $('#result').hide();
+                    }
+                    else {
+                        $.get("{{URL::to('search')}}",{search:search},function (data){
+                            $('#memList').empty().html(data);
+                            $('#result').show();
+                        })
+                    }
+                }
+            )
+        }
+    )
+</script>
 </body>
 </html>
 <?php

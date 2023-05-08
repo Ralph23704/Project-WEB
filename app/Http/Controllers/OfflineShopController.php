@@ -17,7 +17,7 @@ class OfflineShopController
 
     public function index(): View
     {
-        $url = 'http://localhost:4000/product';
+        $url = 'http://localhost:3000/product';
         $product = (new \App\Models\data)->getData($url);
         return view('shopOffline', ['product' => $product]);
     }

@@ -1,6 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
+    @if(isset($response))
+        <script>alert('{{$response}}')</script>
+    @endif
 <div class="container">
     <div class="row justify-content-left">
         <div class="col-md-8">
@@ -84,6 +87,10 @@
                                     <option value="kinshasa">Kinshasa</option>
                                 </select>
                             </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <a href="{{url('ml')}}">Mentions legales</a>
                         </div>
 
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App;
+use Illuminate\Support\Facades\Hash;
 
 class RegisterController
 {
@@ -10,12 +11,12 @@ class RegisterController
         if ($request->input('localisation') == 'douala') {
 
             $userData = [
-                'function' => 'Salariés CESI',
+                'function_id' => 'Salariés CESI',
                 'name' => $request->input('name'),
                 'surname' => $request->input('surname'),
                 'email' => $request->input('email'),
-                'password' => $request->input('password'),
-                'localisation' => $request->input('localisation'),
+                'password' =>  Hash::make($request->input('password')),
+                //'localisation' => $request->input('localisation'),
             ];
 
             $response = (new App\Models\BDEUser)->signIn($userData);

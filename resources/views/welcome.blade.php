@@ -140,21 +140,24 @@
 
             <h2 id="PastEvent"> Past Event</h2>
             <div class="row">
-                <div class="thumbnail">
-                    <img src="{{asset('img/club_chorale.jpg')}}" alt="..." class="Event">
+                @foreach($events as $event)
+                <div class="thumbnail mt-3">
+                    <img src="{{'img/'.$event->image}}" alt="..." class="Event" width="50%">
                     <div class="caption">
-                        <h3>Semaine diversitée</h3>
-                        <p>Description</p>
+                        <h3>{{$event->name}}</h3>
+                        <p>{{$event->description}}</p>
+                        <p>{{$event->dates}}</p>
                         <p> <form class="form-inline row" method="POST" action="" style="float:left;width: 70%; justify-content: space-between">
                             <label for="exampleInputEmail1"></label>
                             <input type="text" class="form-control col-sm-10" id="exampleInputEmail1" placeholder="Enter a comment">
-                            <a type="submit" style="float: right" class="col-sm-2"><i class="bi-send"></i></a>
+                            <a type="submit" style="float: right" class="col-sm-2"><i class="bi-send" onclick="alert('Not Authorized to comment')"></i></a>
                         </form>
-                        <a href="#" class="btn btn-primary" role="button" style="float: right;"><i class="bi-heart"></i></a>
-                        <a href="#" class="btn btn-primary" role="button" style="float: right;"><i class="bi-chat-dots"></i></a>
+                        <a href="#" class="btn btn-primary" role="button" style="float: right;"><i class="bi-heart"></i>{{$event->votes}}</a>
+                        <a href="#" class="btn btn-primary" role="button" style="float: right;"><i class="bi-chat-dots" onclick="alert('Not Authorized to view comments')"></i></a>
                         </p>
                     </div>
                 </div>
+                @endforeach
             </div>
         </div>
         <div class="col-3" style="background-color: black; justify-content: center">
@@ -163,12 +166,13 @@
             </div>
             <!--Boite à idée-->
             <ul class="list-unstyled">
-                @foreach($users as $person)
+                @foreach($activity as $act)
                     <li class="media activite" style="border-radius: 5px">
-                        <img class="mr-3 ideaBox" src="{{asset('img/image.jpg')}}" alt="Generic placeholder image">
+                        <img class="mr-3 ideaBox" src="{{'img/'.$act->image}}" alt="Generic placeholder image">
                         <div class="media-body">
-                            <h5 class="mt-0 mb-1">{{$person->username}}</h5>
-                            Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin.
+                            <h5 class="mt-0 mb-1">{{$act->name}}</h5>
+                            {{$act->description}}
+                            <a href="#" class="btn btn-primary" role="button" style="float: right;"><i class="bi-heart" onclick="alert('Not Authorized to like')"></i>{{$act->votes}}</a>
                         </div>
                     </li>
                 @endforeach

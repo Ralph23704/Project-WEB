@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.appAdmin')
 @section('content')
 @vite(['resources/js/app.js'])
 <head>

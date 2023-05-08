@@ -1,4 +1,4 @@
-@extends('layouts.navbarShop')
+@extends('layouts.app')
 @section('content')
     @include('layouts.navbarShop')
     @vite(['resources/css/shop.css','resources/css/footer.css','resources/js/app.js'])
@@ -127,7 +127,7 @@
                 <div class="card-body">
                     <h5 class="card-title">{{$data->name}}</h5>
                     <p class="card-text">{{$data->price}}
-                        <i class="bi-cart add"></i>
+                        <a href="{{url('/addProduct?name='.$data->name.'&image='.$data->image.'&price='.$data->price.'&description='.$data->description)}}"><i class="bi-cart add" type="button" ></i></a>
                     </p>
                 </div>
             </div>
@@ -159,41 +159,39 @@
         <li class="nav-item dropdown down" id="sort">
             <a class="dropdown-toggle body sort" data-bs-toggle="dropdown">Sort By</a>
             <ol class="dropdown-menu">
-                <a class="dropdown-item body" href="#">Le moins cher</a>
-                <a class="dropdown-item body" href="#">le plus cher</a>
-                <a class="dropdown-item body" href="#">Ordre alphabetique</a>
+                <a class="dropdown-item body" href="{{url('/sort')}}">Ordre alphabetique</a>
             </ol>
         </li>
     </div>
     <hr>
     <div class="container">
         <div class="row">
-
-                @foreach($product as $data)
-                <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
-                    <div class="card carte">
-                        <img src="{{'img/'.$data->image}}" class="card-img-top" alt="Not Found">
-                        <div class="card-body">
-                            <h5 class="card-title">{{$data->name}}</h5>
-                            <p class="card-text">{{$data->price}}
-                                <i class="bi-cart add"></i>
-                            </p>
-                        </div>
+            @foreach($product as $data)
+            <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3 col-xxl-3 mt-3">
+                <div class="card carte">
+                    <img src="{{'img/'.$data->image}}" class="card-img-top" alt="Not Found">
+                    <div class="card-body">
+                        <h5 class="card-title">{{$data->name}}</h5>
+                        <p class="card-text">{{$data->price}}
+                            <a href="{{url('/addProduct?name='.$data->name.'&image='.$data->image.'&price='.$data->price.'&description='.$data->description)}}"><i class="bi-cart add" type="button" ></i></a>
+                        </p>
                     </div>
                 </div>
-                @endforeach
-
+            </div>
+            @endforeach
         </div>
     </div>
+
 </div>
     <div class="d-flex justify-content-center">
-        {{$product->links()}}
+
     </div>
 <div class="container-fluid body mt-3" id="footer">
     Copyright Group 1 X2026
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/gsap.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script>
     const carouselWrapper = document.querySelector('.carousel__wrapper');
     const prevBtn = document.querySelector('#prevBtn');
@@ -231,5 +229,6 @@
 
     // Slide automatique toutes les 5 secondes
     setInterval(slideNext, 5000);
+
 </script>
 @endsection

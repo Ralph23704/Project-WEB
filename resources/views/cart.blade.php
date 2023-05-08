@@ -11,35 +11,24 @@
 <!--Les plus commandés-->
 <div class="container-fluid mt-3">
     <div class="row title1"><h1>Votre Panier</h1></div><hr>
+    @if(isset($item))
     <div class="container">
         <div class="row">
             <div class="col-3">
-                <img src="{{asset('img/objet.jpeg')}}" class="card-img-top" alt="Not Found">
+                <img src="{{'img/'.$image}}" class="card-img-top" alt="Not Found">
             </div>
 
             <div class="col-9">
-                <h5>Nom</h5>
-                <p>Description
-                    <i style="float: right">Price</i>
+                <h5>{{$name}}</h5>
+                <p>{{$description}}
+                    <i style="float: right">{{$price}}</i>
                 </p>
             </div>
         </div>
     </div>
-
-    <div class="container mt-3">
-        <div class="row">
-            <div class="col-3">
-                <img src="{{asset('img/objet.jpeg')}}" class="card-img-top" alt="Not Found">
-            </div>
-
-            <div class="col-9">
-                <h5>Nom</h5>
-                <p>Description
-                    <i style="float: right">Price</i>
-                </p>
-            </div>
-        </div>
-    </div>
+    @else
+        <div class="container">No product Yet</div>
+    @endif
 </div>
 
 <div class="container-fluid mt-3" id="buy">
